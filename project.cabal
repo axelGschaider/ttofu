@@ -1,0 +1,69 @@
+name:             ttofu
+version:          0.0.1
+license:          MIT
+license-file:     LICENSE
+author:           Axel Gschaider
+maintainer:       axel.gschaider@gmail.com
+homepage:         https://github.com/axelGschaider/ttofu
+cabal-version:    >= 1.14
+build-type:       Simple
+
+extra-source-files:
+  README.md
+
+source-repository head
+  type:     git
+  location: https://github.com/axelGschaider/ttofu.git
+
+-- flags
+
+flag optimize
+  description: apply compilation optimizations
+  default:     True
+
+-- build artifacts
+
+library
+  hs-source-dirs:   src
+  default-language: Haskell2010
+  ghc-options:      -Wall
+
+  if flag(optimize)
+    ghc-options: -O2 -fspec-constr -funbox-strict-fields -fdicts-cheap
+
+  build-depends:
+    base >= 4 && < 6
+
+  exposed-modules:
+    Main
+
+executable ttofu
+  main-is:          Main.hs
+  hs-source-dirs:   bin
+  default-language: Haskell2010
+  ghc-options:      -Wall
+
+  build-depends:
+    ttofu,
+    base >= 4 && < 6
+
+test-suite tests
+  type:             exitcode-stdio-1.0
+  main-is:          Test.hs
+  hs-source-dirs:   src, test
+  default-language: Haskell2010
+  cpp-options:      -DTEST
+  ghc-options:
+    -main-is Test.runTests
+    -Wall
+    -fno-warn-missing-signatures
+    -fno-warn-unused-binds
+
+  build-depends:
+    PNAME,
+    base                       >= 4 && < 6,
+    test-framework             == 0.6.1,
+    test-framework-quickcheck2 == 0.2.12.3,
+    test-framework-hunit       == 0.2.7,
+    QuickCheck,
+    HUnit
