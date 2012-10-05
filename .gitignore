@@ -4,4 +4,4 @@
 *.o
 *.hi
 *.chi
-*.chs.h
+*.chs.h*.swp
