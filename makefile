@@ -1,0 +1,7 @@
+
+all:
+	cabal-dev build
+
+
+
+
