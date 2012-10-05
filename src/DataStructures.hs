@@ -1,5 +1,7 @@
-module DataStructures where
+module DataStructures (
+  Line,
+  Column
+) where
 
-type Line = String
-type Column = [Line]
+import DataStructuresUtil
 
