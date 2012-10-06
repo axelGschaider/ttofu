@@ -36,7 +36,8 @@ library
 
   exposed-modules:
     Split,
-    DataStructures
+    DataStructures,
+    Move
 
 executable ttofu
   main-is:          Main.hs

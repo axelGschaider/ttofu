@@ -1,6 +1,7 @@
 module DataStructures (
   Line,
-  Column
+  Column,
+  Document
 ) where
 
 import DataStructuresUtil

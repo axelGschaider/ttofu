@@ -1,6 +1,7 @@
 module Split (
  stupidSlicer,
- split
+ split,
+ toDocument
 )
 
 where
